@@ -6,13 +6,12 @@ public class Kartendeck {
     public ArrayList<Karte> kartendeck;
 
     public Kartendeck() {
-        kartendeck = new ArrayList<>();
+        kartendeck = new ArrayList<Karte>();
         createDeck();
     }
 
     public void addCard(Karte card) {
-        kartendeck.add(card);
-
+       kartendeck.add(card);
     }
 
     private void createDeck() {
@@ -29,14 +28,26 @@ public class Kartendeck {
         kartendeck.add(new Karte(0, "Blau"));
         kartendeck.add(new Karte(0, "Grün"));
         kartendeck.add(new Karte(0, "Gelb"));
+        for (int i = 0; i <= 1; i++) {
+            //this is the +2 Cards (tinonino)
+            kartendeck.add(new Karte("Rot", "+2"));
+            kartendeck.add(new Karte("Blau", "+2"));
+            kartendeck.add(new Karte("Grün", "+2"));
+            kartendeck.add(new Karte("Gelb", "+2"));
 
+        }
     }
 
     @Override
     public String toString() {
         String hansi = "";
-        for (Karte a : kartendeck) {
-            hansi += ", " + a.toString();
+        for (int i = 0; i < kartendeck.size(); i++) {
+            Karte a = kartendeck.get(i);
+            if (i == 0) {
+                hansi += a.toString();
+            } else {
+                hansi += ", " + a.toString();
+            }
         }
         return hansi;
     }
