@@ -10,7 +10,7 @@ public class Main {
         System.out.println(deck);
 
         Spieler hansi = new Spieler(1);
-        hansi.addPlayer();
+
 
 
 

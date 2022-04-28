@@ -56,6 +56,10 @@ public class Kartendeck {
         }
     }
 
+    public Karte drawCard(){
+        return kartendeck.remove(kartendeck.size()-1);
+    }
+
     @Override
     public String toString() {
         String hansi = "";
