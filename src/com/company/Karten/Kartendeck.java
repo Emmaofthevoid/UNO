@@ -1,6 +1,8 @@
 package com.company.Karten;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Random;
 
 public class Kartendeck {
     public ArrayList<Karte> kartendeck;
@@ -8,10 +10,11 @@ public class Kartendeck {
     public Kartendeck() {
         kartendeck = new ArrayList<Karte>();
         createDeck();
+        Collections.shuffle(kartendeck);
     }
 
     public void addCard(Karte card) {
-       kartendeck.add(card);
+        kartendeck.add(card);
     }
 
     private void createDeck() {
@@ -34,6 +37,21 @@ public class Kartendeck {
             kartendeck.add(new Karte("Blau", "+2"));
             kartendeck.add(new Karte("Grün", "+2"));
             kartendeck.add(new Karte("Gelb", "+2"));
+            //this is the revese Cards
+            kartendeck.add(new Karte("Rot", "Reverse"));
+            kartendeck.add(new Karte("Blau", "Reverse"));
+            kartendeck.add(new Karte("Grün", "Reverse"));
+            kartendeck.add(new Karte("Gelb", "Reverse"));
+            //this is aussetzen (spieler überspringen)
+            kartendeck.add(new Karte("Rot", "Aussetzen"));
+            kartendeck.add(new Karte("Blau", "Aussetzen"));
+            kartendeck.add(new Karte("Grün", "Aussetzen"));
+            kartendeck.add(new Karte("Gelb", "Aussetzen"));
+
+        }
+        for (int i = 0; i < 4; i++) {
+            kartendeck.add(new Karte("+4"));
+            kartendeck.add(new Karte("Farbwechsel"));
 
         }
     }
@@ -51,4 +69,20 @@ public class Kartendeck {
         }
         return hansi;
     }
+
+
+
+    // public static void shuffle (ArrayList<Karte> cardArray) {
+    //  Random random = new Random();
+
+//        for (int i = 0; i < cardArray.size(); i++) {
+//            int r = i + random.nextInt(cardArray.size()-i);
+//
+//                int temp = cardArray[r];
+//                cardArray[r] = cardArray[i];
+//                cardArray[i] = temp;
+//
+//        }
+    //   }
+
 }
