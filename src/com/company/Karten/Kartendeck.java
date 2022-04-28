@@ -70,19 +70,4 @@ public class Kartendeck {
         return hansi;
     }
 
-
-
-    // public static void shuffle (ArrayList<Karte> cardArray) {
-    //  Random random = new Random();
-
-//        for (int i = 0; i < cardArray.size(); i++) {
-//            int r = i + random.nextInt(cardArray.size()-i);
-//
-//                int temp = cardArray[r];
-//                cardArray[r] = cardArray[i];
-//                cardArray[i] = temp;
-//
-//        }
-    //   }
-
 }
