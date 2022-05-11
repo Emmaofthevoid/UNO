@@ -10,18 +10,23 @@ public class Spieler {
     ArrayList<Karte> hand = new ArrayList<>();
     String name;
     int points;
-    int nummer;
 
-    public Spieler(int nummer) {
-        this.nummer = nummer;
+    public Spieler(String name) {
+        this.name = name;
     }
 
     public String getName() {
         return name;
     }
 
-    public void takeCard(Karte card){
+
+    public void takeCard(Karte card) {
         hand.add(card);
+    }
+
+    //methode um karten zu spielen
+    public Karte playCard() {
+        return null;
     }
 
 
