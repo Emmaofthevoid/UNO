@@ -20,7 +20,7 @@ public class Karte {
     }
 
     //this is spezialkarten (ohne farbe)
-    public Karte ( String aktion) {
+    public Karte (String aktion) {
         this.aktion = aktion;
     }
 
