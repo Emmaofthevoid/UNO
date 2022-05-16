@@ -36,5 +36,17 @@ public class Karte {
             return farbe + " " + aktion;
         }
         return null;
+
+        // 3 Rot
+        // 9 Grün
+    }
+
+    public boolean matchesString(String input){
+        if (input == farbe.toLowerCase().charAt(0) + "" + karteNummer){
+            return true;
+        }
+        return false;
     }
 }
+
+

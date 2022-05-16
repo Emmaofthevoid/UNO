@@ -4,6 +4,7 @@ import com.company.Spieler.Spieler;
 
 import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class App {
@@ -11,14 +12,16 @@ public class App {
     private ArrayList<Spieler> spieler = new ArrayList<>();
     //ablage stapel machen (wo die karten hingeworfen werden (array)
     private AblageStapel stapel = new AblageStapel();
-    private ArrayList<Karte> hand = new ArrayList<>();
     private final Scanner input;
     private final PrintStream output;
+    private Spieler currentPlayer;
+    private boolean exit = false;
 
     public App(Scanner input, PrintStream output) {
         this.input = input;
         this.output = output;
     }
+
 
     public void addPlayer() {
         String name;
@@ -35,8 +38,6 @@ public class App {
         }
     }
 
-    Karte probeKarte = new Karte(2, "Rot");
-
     public void handOut(Spieler spieler) {
 
         for (int i = 0; i < 7; i++) {
@@ -50,11 +51,15 @@ public class App {
         // alles was einmal stattfindet: handout(take card), namen eingeben,
         initialize();
         //karteAblegen();
-        printState();
+        while (!exit) {
+            printState();
+            String cardInput = readInput(input);
+            System.out.println("Ihre Eingabe war: " + cardInput);
+            karteAblegen(cardInput);
+        }
 
-        //while (game runs) {
+        //TODO: Schleife draus machen! Darf/Muss noch verändert werden --> Doppelschleife
 
-        //while loop somewhere here
         //karte muss ausgewählt werden, dann gespielt, entfernt von die handout und im stapel hingefügt
         //spielrunden(game), draw/remove card
     }
@@ -65,31 +70,38 @@ public class App {
             handOut(sp);
         }
         stapel.ersteKarte(deck);
+        Collections.shuffle(spieler);
+        currentPlayer = spieler.get(0);
+        //random player beginnt
+
     }
 
     private void printState() {
-        //welche karte gespielt wurde,
+        //welche karte gespielt wurde
 
+        output.println(currentPlayer.printHand());
     }
 
-    private void readUserInput() {
-        //input von die karte die gespielt wird
-    }
 
-    public void karteAblegen(Scanner scanner) {
-        //Problem: String nicht mit Objekt vergleichbar --> lösen!
-        //oder zu einer Karte konvertieren (Input)
 
-        String karte = input.next();
-        for(Karte i : hand) {
-            if (karte.equals(i)){
-                hand.remove(i);
-                stapel.ablegen(i);
-            }
+
+    public void karteAblegen(String cardInput) {
+        Karte card = currentPlayer.karteSpielen(cardInput);
+        if (card == null){
+            System.out.println("Bitte gültige Karte eingeben.");
         }
-
-        //hand.remove(karte);
-        //stapel.ablegen(karte);
+        stapel.ablegen(card);
 
     }
+
+    //TODO methode, um zu überprüfen, ob Input-Wert einer Karte entspricht --> auf der Hand
+    // mit Schleife machen!!!
+    // wenn beide equal sind --> Karte kann gespielt werden
+
+    public String readInput(Scanner eingabe) {
+        System.out.println("Bitte Karte eingeben: ");
+        String var = eingabe.nextLine();
+        return var;
+    }
+
 }
