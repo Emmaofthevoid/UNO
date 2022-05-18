@@ -101,6 +101,7 @@ public class App {
     public String readInput(Scanner eingabe) {
         System.out.println("Bitte Karte eingeben: ");
         String var = eingabe.nextLine();
+        // TODO: var.split() --> muss aufgeteilt werden, weil man sonst die einzelnen Strings nicht trennen kann
         return var;
     }
 
