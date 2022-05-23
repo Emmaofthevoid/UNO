@@ -3,6 +3,7 @@ package com.company.Karten;
 import com.company.Spieler.Spieler;
 
 import java.io.PrintStream;
+import java.sql.SQLClientInfoException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
